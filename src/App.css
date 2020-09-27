@@ -73,3 +73,5 @@
 .container {
   padding: 2px 16px;
 }
+
+.resizedTextbox {width: 500px; height: 100px; padding: 1px}

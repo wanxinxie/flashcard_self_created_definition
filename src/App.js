@@ -5,10 +5,11 @@ import './App.css';
 import fire from './fire';
 
 class App extends React.Component{
+
   constructor(props) {
     super(props);
     this.state = {
-      word_value:"",
+      id_value:"",
       def_value : "",
       isFlipped: false,
       text:'success',
@@ -34,9 +35,18 @@ class App extends React.Component{
       def10: 'Definition 10',
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleChange_word = this.handleChange_word.bind(this);
     this.handleChange_def = this.handleChange_def.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit1 = this.handleSubmit1.bind(this);
+    this.handleSubmit2 = this.handleSubmit2.bind(this);
+    this.handleSubmit3 = this.handleSubmit3.bind(this);
+    this.handleSubmit4 = this.handleSubmit4.bind(this);
+    this.handleSubmit5 = this.handleSubmit5.bind(this);
+    this.handleSubmit6 = this.handleSubmit6.bind(this);
+    this.handleSubmit7 = this.handleSubmit7.bind(this);
+    this.handleSubmit8 = this.handleSubmit8.bind(this);
+    this.handleSubmit9 = this.handleSubmit9.bind(this);
+    this.handleSubmit10 = this.handleSubmit10.bind(this);
   }
 
   handleClick(e) {
@@ -47,18 +57,106 @@ class App extends React.Component{
   handleChange_def(event) {
     this.setState({def_value: event.target.value});
   }
+  handleChange_id(event) {
+    this.setState({id_value: event.target.value});
+  }
+  handleSubmit1(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word1);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
 
-  handleChange_word(event) {
-    this.setState({word_value: event.target.value});
+  handleSubmit2(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word2);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+
+  handleSubmit3(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word3);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+
+  handleSubmit4(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word4);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+  handleSubmit5(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word5);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+  handleSubmit6(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word6);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+  handleSubmit7(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word7);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+  handleSubmit8(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word8);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+  handleSubmit9(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word9);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
+  }
+  handleSubmit10(event) {
+    let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
+    fire.database().ref('messages').push(this.state.word10);
+    fire.database().ref('messages').push(this.state.def_value);
+    this.setState({
+      def_value: "",
+    })
+    event.preventDefault();
   }
   handleSubmit(event) {
     let messageRef = fire.database().ref('messages').orderByKey().limitToLast(100);
-    fire.database().ref('messages').push(this.state.word_value);
-    fire.database().ref('messages').push(this.state.def_value);
-    this.setState({
-      word_value : "",
-      def_value: "",
-    })
+    fire.database().ref('messages').push(this.state.id);
     event.preventDefault();
   }
 
@@ -72,18 +170,17 @@ class App extends React.Component{
           <div class="container">
             <h1>{this.state.word1}</h1>
             <button onClick={this.handleClick}>Click to flip</button>
+
           </div>
         </div>
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit1}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -100,13 +197,11 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit2}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -123,13 +218,12 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit3}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -146,13 +240,11 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit4}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -169,13 +261,12 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit5}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -192,13 +283,11 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit6}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -215,13 +304,12 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                    <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit7}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -238,13 +326,12 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                    <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit8}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -261,13 +348,12 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit9}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
           </div>
@@ -284,33 +370,21 @@ class App extends React.Component{
 
         <div class="card">
           <div class="container">
-            <h4><b>Word</b></h4>
-          <input type ="text" onChange={this.handleChange_word} id="inputText"/>
-            <h4><b>Definition</b></h4>
-            <input type ="text" onChange={this.handleChange_def} id="inputText"/>
+            <h1><b>Definition</b></h1>
+            <input type ="text" onChange={this.handleChange_def} id="inputText" class="resizedTextbox"/>
               <br/>
-                      <p></p>
-                      <button onClick={this.handleSubmit}> Save </button>
+                      <p><b>Please DO NOT edit again once you click "Save"</b></p>
+                      <button onClick={this.handleSubmit10}> Save </button>
                       <p></p>
             <button onClick={this.handleClick}>Click to flip</button>
+            <p><b>Please submit your ID and click "Finish all" if all definitions are filled</b></p>
+            <h4><b>Your ID</b></h4>
+            <input type ="text" onChange={this.handleChange_id} id="inputText"/>
+            <button onClick={this.handleSubmit}>Finish all</button>
           </div>
         </div>
       </ReactCardFlip>
-      <ReactCardFlip isFlipped="false" flipDirection="vertical">
-        <div class="card">
-          <div class="container">
-            <h1>Passage</h1>
-            <p>Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly journalistic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because it controls what happens in the rest of the paragraph.</p>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="container">
-            <h1>Passage</h1>
-            <p>Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly journalistic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because it controls what happens in the rest of the paragraph.</p>
-          </div>
-        </div>
-      </ReactCardFlip>
 </Carousel>
 
       </div>
